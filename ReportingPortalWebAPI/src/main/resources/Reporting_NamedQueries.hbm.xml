@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+     
+    <!--  ########################  Queries for Eligibility NewHires NonFullTime Report ######################## --> 
+    
+    <sql-query name="PRC_NewHiresNonFullTime_ReferenceData_WorkYear">
+        <![CDATA[call PRC_NewHiresNonFullTime_ReferenceData_WorkYear()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresNonFullTime_ReferenceData_WorkMonth">
+        <![CDATA[call PRC_NewHiresNonFullTime_ReferenceData_WorkMonth()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresNonFullTime_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_NewHiresNonFullTime_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresNonFullTime_ReferenceData_UnionType">
+        <![CDATA[call PRC_NewHiresNonFullTime_ReferenceData_UnionType()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresNonFullTime_ReferenceData_EmployeeType">
+        <![CDATA[call PRC_NewHiresNonFullTime_ReferenceData_EmployeeType()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresNonFullTime_ReportCountByWeek">
+        <![CDATA[call PRC_NewHiresNonFullTime_ReportCountByWeek(:workYear,:workMonth,:controlGroup,:unionType,:employeeType)]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresNonFullTime_ReportByWeeksCount">
+        <![CDATA[call PRC_NewHiresNonFullTime_ReportByWeeksCount(:workYear,:workMonth,:controlGroup,:unionType,:employeeType,:reportOfWeek)]]>
+    </sql-query>
+    
+    <!--  ###################################################################################################### --> 
+    
+    
+    
+    <!--  ########################  Queries for Eligibility NewHires NonFullTime Report ######################## --> 
+    
+    <sql-query name="PRC_NewHiresFullTime_ReferenceData_WorkYear">
+        <![CDATA[call PRC_NewHiresFullTime_ReferenceData_WorkYear()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresFullTime_ReferenceData_WorkMonth">
+        <![CDATA[call PRC_NewHiresFullTime_ReferenceData_WorkMonth()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresFullTime_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_NewHiresFullTime_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresFullTime_ACAEligibleCount">
+        <![CDATA[call PRC_NewHiresFullTime_ACAEligibleCount(:workYear,:workMonth,:controlGroup)]]>
+    </sql-query>
+    
+    <sql-query name="PRC_NewHiresFullTime_ReportByACAEligibleCount">
+        <![CDATA[call PRC_NewHiresFullTime_ReportByACAEligibleCount(:workYear,:workMonth,:controlGroup,:acaEligibleCount)]]>
+    </sql-query>
+    
+    <!--  ###################################################################################################### -->
+    
+    
+    
+    <!--  ###################################  Queries for On-Going Report ##################################### -->
+    
+    <sql-query name="PRC_OnGoing_ReferenceData_MeasurementEndDate">
+        <![CDATA[call PRC_OnGoing_ReferenceData_MeasurementEndDate()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_OnGoing_ReferenceData_UnionType">
+        <![CDATA[call PRC_OnGoing_ReferenceData_UnionType()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_OnGoing_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_OnGoing_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_OnGoing_CountByWeek">
+        <![CDATA[call PRC_OnGoing_CountByWeek(:controlGroup,:measurementEndDate,:avgWeeklyThreshold,:unionType)]]>
+    </sql-query>
+    
+    <sql-query name="PRC_OnGoing_ReportsForCountByWeek">
+        <![CDATA[call PRC_OnGoing_ReportsForCountByWeek(:controlGroup,:measurementEndDate,:avgWeeklyThreshold,:unionType,:reportForWeek)]]>
+    </sql-query>
+    
+    
+    <!--  ###################################################################################################### -->
+    
+    
+    <!--  ###################################  Queries for ERCoverage Report ##################################### -->
+    
+    <sql-query name="PRC_ERCoverage_ReferenceData_WorkYear">
+        <![CDATA[call PRC_ERCoverage_ReferenceData_WorkYear()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_ERCoverage_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_ERCoverage_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_ERCoverage_AnnualizedMonthlyCount">
+        <![CDATA[call PRC_ERCoverage_AnnualizedMonthlyCount(:workYear,:controlGroup)]]>
+    </sql-query>
+    
+    <sql-query name="PRC_ERCoverage_ReportsByAnnualizedMonthlyCount">
+        <![CDATA[call PRC_ERCoverage_ReportsByAnnualizedMonthlyCount(:workYear,:controlGroup,:annualizedMonthlyCount)]]>
+    </sql-query>
+    
+    
+    <!--  ###################################################################################################### -->
+    
+    
+    
+    <!--  ###################################  Queries for Payroll Data Activity Report ##################################### -->
+    
+    
+    <sql-query name="PRC_PayrollDataActivity_ReferenceData_WorkYear">
+        <![CDATA[call PRC_PayrollDataActivity_ReferenceData_WorkYear()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_PayrollDataActivity_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_PayrollDataActivity_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_PayrollDataActivity_ReportsForPayrollDataActivity">
+        <![CDATA[call PRC_PayrollDataActivity_ReportsForPayrollDataActivity(:workYear,:controlGroup)]]>
+    </sql-query>
+    
+    
+    <!--  ###################################################################################################### -->
+    
+    <!--  ###################################  Queries for Break In Report ##################################### -->
+    
+    <sql-query name="PRC_BreakIn_ReferenceData_WorkYear">
+        <![CDATA[call PRC_BreakIn_ReferenceData_WorkYear()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_BreakIn_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_BreakIn_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_BreakIn_ReferenceData_Week_Starting">
+        <![CDATA[call PRC_BreakIn_ReferenceData_Week_Starting()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_BreakIn_ReferenceData_Week_Ending">
+        <![CDATA[call PRC_BreakIn_ReferenceData_Week_Ending()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_BreakInService_ReportData">
+        <![CDATA[call PRC_BreakInService_ReportData(:workYear,:controlGroup,:weekStarting,:weekEnding)]]>
+    </sql-query>
+    
+    <!--  ###################################################################################################### -->
+    
+    <!--  ###################################  Queries for Demo Graphics Report ##################################### -->
+    
+    <sql-query name="PRC_Demographics_ReferenceData_WorkYear">
+        <![CDATA[call PRC_Demographics_ReferenceData_WorkYear()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Demographics_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_Demographics_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Demographics_ReferenceData_Parent_Company">
+        <![CDATA[call PRC_Demographics_ReferenceData_Parent_Company()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Demographics_ReferenceData_Production_Company">
+        <![CDATA[call PRC_Demographics_ReferenceData_Production_Company()]]>
+    </sql-query>
+    
+     <sql-query name="PRC_Demographics_ReferenceData_Payroll_Company">
+        <![CDATA[call PRC_Demographics_ReferenceData_Payroll_Company()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Demographics_ReportData">
+        <![CDATA[call PRC_Demographics_ReportData(:workYear,:controlGroup,:parentCompnay,:proudctioncompany,:payrollCompany)]]>
+    </sql-query>
+    
+    <!--  ###################################################################################################### -->
+    
+       <!--  ###################################  Queries for Eligibility Report ##################################### -->
+    
+    <sql-query name="PRC_Eligibility_ReferenceData_WorkYear">
+        <![CDATA[call PRC_Eligibility_ReferenceData_WorkYear()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Eligibility_ReferenceData_ControlGroup">
+        <![CDATA[call PRC_Eligibility_ReferenceData_ControlGroup()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Eligibility_ReferenceData_Union_Status">
+        <![CDATA[call PRC_Eligibility_ReferenceData_Union_Status()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Eligibility_ReferenceData_Type_Of_Hours">
+        <![CDATA[call PRC_Eligibility_ReferenceData_Type_Of_Hours()]]>
+    </sql-query>
+    
+    <sql-query name="PRC_Eligibility_ReportData">
+        <![CDATA[call PRC_Eligibility_ReportData(:workYear,:controlGroup,:unionStatus,:typeOfHours)]]>
+    </sql-query>
+    
+    <!--  ###################################################################################################### -->
+    
+</hibernate-mapping>

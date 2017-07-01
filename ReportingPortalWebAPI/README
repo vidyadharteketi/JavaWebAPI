@@ -1,0 +1,25 @@
+Spring OAuth2 Example:-
+***************************
+Please check the following from REST client:-
+------------------------------------------------
+Simple URL:
+***********
+http://localhost:<port>/ReportingPortalWebAPI/<REST_URL>
+
+
+UserName/Password = test/test
+
+
+
+<OTHER_REST_URLs>
+
+http://localhost:8080/ReportingPortalWebAPI/<REST_URL_1>
+http://localhost:8080/ReportingPortalWebAPI/<REST_URL_2>
+http://localhost:8080/ReportingPortalWebAPI/<REST_URL_3>
+
+
+
+
+
+
+
