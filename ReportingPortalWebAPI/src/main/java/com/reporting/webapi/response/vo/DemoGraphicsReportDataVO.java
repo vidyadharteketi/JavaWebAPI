@@ -94,6 +94,10 @@ public class DemoGraphicsReportDataVO implements Serializable{
 	@XmlElement(name = "ControlGroup")
 	private String controlGroup;
 
+	@XmlElementWrapper(name = "WorkYear")
+	@XmlElement(name = "WorkYear")
+	private String workYear;
+	
 	public String getParentCompany() {
 		return parentCompany;
 	}
@@ -246,5 +250,14 @@ public class DemoGraphicsReportDataVO implements Serializable{
 		this.controlGroup = controlGroup;
 	}
 
+	public String getWorkYear() {
+		return workYear;
+	}
+
+	public void setWorkYear(String workYear) {
+		this.workYear = workYear;
+	}
+
+	
 	
 }

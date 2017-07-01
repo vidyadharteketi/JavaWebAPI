@@ -114,6 +114,10 @@ public class BreakInServiceReportExcelBuilder {
         header.getCell(5).setCellStyle(style);
         header.createCell(6).setCellValue("Week Count");
         header.getCell(6).setCellStyle(style);
+        header.createCell(7).setCellValue("Control Group");
+        header.getCell(7).setCellStyle(style);
+        header.createCell(8).setCellValue("Work Year");
+        header.getCell(8).setCellStyle(style);
         
         int rowCount = 1;
         for(Object reportObj : reportsList) {
@@ -128,6 +132,8 @@ public class BreakInServiceReportExcelBuilder {
         	newRow.createCell(4).setCellValue(reportRowBean.getWeekStarting());
         	newRow.createCell(5).setCellValue(reportRowBean.getWeekEnding());
         	newRow.createCell(6).setCellValue(reportRowBean.getWeekCount());
+        	newRow.createCell(7).setCellValue(reportRowBean.getControlGroup());
+        	newRow.createCell(8).setCellValue(reportRowBean.getWorkYear());
         }
         
 		try{

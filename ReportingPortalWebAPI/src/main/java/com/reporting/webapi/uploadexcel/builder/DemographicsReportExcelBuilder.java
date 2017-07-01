@@ -137,7 +137,8 @@ public class DemographicsReportExcelBuilder {
         header.getCell(17).setCellStyle(style);
         header.createCell(18).setCellValue("Control Group");
         header.getCell(18).setCellStyle(style);
-        
+        header.createCell(19).setCellValue("Control Group");
+        header.getCell(19).setCellStyle(style);
         
         int rowCount = 1;
         for(Object reportObj : reportsList) {
@@ -164,6 +165,7 @@ public class DemographicsReportExcelBuilder {
         	newRow.createCell(16).setCellValue(reportRowBean.getState());
         	newRow.createCell(17).setCellValue(reportRowBean.getZip());
         	newRow.createCell(18).setCellValue(reportRowBean.getControlGroup());
+        	newRow.createCell(18).setCellValue(reportRowBean.getWorkYear());
         }
         
 		try{

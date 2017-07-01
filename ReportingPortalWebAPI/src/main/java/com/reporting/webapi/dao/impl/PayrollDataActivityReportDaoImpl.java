@@ -82,6 +82,7 @@ public class PayrollDataActivityReportDaoImpl implements IPayrollDataActivityRep
 					reportsForPayrollDataActivityVO = new ReportsForPayrollDataActivityVO();
 
 					Object[] column = (Object[]) o;
+					
 					if (null != column[0]) {
 						reportsForPayrollDataActivityVO.setSSN_NUMBER((column[0].toString()));
 					}
@@ -162,7 +163,7 @@ public class PayrollDataActivityReportDaoImpl implements IPayrollDataActivityRep
 				}					
 			}
 		}catch (Exception e) {
-
+			logger.error(" getPayrollDataActivityReportData :: Error while fetching PayrollDataActivityReportData :: ", e);
 		}
 		
 		if(logger.isDebugEnabled()){

@@ -47,7 +47,10 @@ public class BreakInReportDataVO implements Serializable{
 	@XmlElement(name = "ControlGroup")
 	private String controlGroup;
 
-
+	@XmlElementWrapper(name = "WorkYear")
+	@XmlElement(name = "WorkYear")
+	private String workYear;
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -128,5 +131,15 @@ public class BreakInReportDataVO implements Serializable{
 	}
 
 
+	public String getWorkYear() {
+		return workYear;
+	}
+
+
+	public void setWorkYear(String workYear) {
+		this.workYear = workYear;
+	}
+
+	
 	
 }

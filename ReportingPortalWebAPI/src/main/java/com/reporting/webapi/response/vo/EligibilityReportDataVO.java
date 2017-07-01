@@ -52,6 +52,10 @@ public class EligibilityReportDataVO implements Serializable{
 	@XmlElement(name = "ControlGroup")
 	private String controlGroup;
 
+	@XmlElementWrapper(name = "WorkYear")
+	@XmlElement(name = "WorkYear")
+	private String workYear;
+	
 	public String getEmployeeName() {
 		return employeeName;
 	}
@@ -131,6 +135,15 @@ public class EligibilityReportDataVO implements Serializable{
 	public void setControlGroup(String controlGroup) {
 		this.controlGroup = controlGroup;
 	}
+
+	public String getWorkYear() {
+		return workYear;
+	}
+
+	public void setWorkYear(String workYear) {
+		this.workYear = workYear;
+	}
+	
 	
 	
 }

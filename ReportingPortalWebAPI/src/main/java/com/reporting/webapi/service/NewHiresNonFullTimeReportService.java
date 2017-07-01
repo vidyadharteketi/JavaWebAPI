@@ -1,6 +1,8 @@
 package com.reporting.webapi.service;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,8 @@ import org.springframework.stereotype.Component;
 
 import com.reporting.webapi.adapter.INewHiresNonFullTimeReportAdapter;
 import com.reporting.webapi.bean.NewHireNonFullTimeReferanceDataBean;
+import com.reporting.webapi.helper.TransformHTMLToPDFHelper;
+import com.reporting.webapi.pdfbuilder.beans.PDFDocumentParser;
 import com.reporting.webapi.response.vo.NewHireNonFullTimeReferenceDataVO;
 import com.reporting.webapi.response.vo.ReportCountByWeekVO;
 import com.reporting.webapi.response.vo.ReportsByWeeksCountVO;
@@ -39,6 +43,12 @@ public class NewHiresNonFullTimeReportService {
 	
 	@Autowired
 	private ReportsExcelBuilderUtil reportsExcelBuilderUtil;
+	
+	@Autowired
+	TransformHTMLToPDFHelper transformHTMLToPDFHelper;
+	
+	@Autowired
+	PDFDocumentParser pdfDocumentParser;
 	
 	@Path(CommonConstants.NEW_HIRES_NON_FULL_TIME_SERVICE_REFERENCE_DATA)
 	@GET
@@ -108,6 +118,21 @@ public class NewHiresNonFullTimeReportService {
 			reportCountByWeek =  newHiresNonFullTimeReportAdapter.getNewHiresNonFullTimeCountByWeek(workYear,workMonth,controlGroup,
 					unionType,employeeType);
 			customReportCountByWeekVO.setReportCountByWeek(reportCountByWeek);
+			
+			// YAHP 
+			/*logger.info(" Invoking TransformHTMLToPDFHelper : Converting HTML page to PDF");
+			String inputFilePath = "C:/ReportingPortalWebAPI-UploadExcel/HTMLSource/ACA_Solutions.html";
+			String outputFilePath = "C:/ReportingPortalWebAPI-UploadExcel/NewHireNonFullTime_PDFReport/SampleScreen.pdf";
+			
+			transformHTMLToPDFHelper.transform(new File(inputFilePath), new File(outputFilePath));*/
+			
+			// itextpdf
+			String folderNameTimeStampString = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+			String resourceFolder = "C:/ReportingPortalWebAPI-UploadExcel/NewHireNonFullTime_PDFReport/pdf-nhnft";
+			String pdfDest = resourceFolder+"/"+"Sample.pdf";
+			String htmlSource = "C:/ReportingPortalWebAPI-UploadExcel/HTMLSource/"+"ACA Solutions.html";
+			pdfDocumentParser.parseHeaderFooter(htmlSource, pdfDest, resourceFolder);
+			
 		} catch (Exception e) {
 			logger.error("Error while invoking getNewHiresNonFullTimeCountByWeek : " + e.getMessage());
 		}

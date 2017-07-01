@@ -85,34 +85,40 @@ public class EligibilityReportDaoImpl implements IEligibilityReportDao{
 				Object column[] = (Object[])iterator.next();
 				eligibilityReportDataVO = new EligibilityReportDataVO();
 				if (null != column[0]) {
-					eligibilityReportDataVO.setEmployeeName((column[0].toString()));
+					eligibilityReportDataVO.setEmployeeName((column[0].toString()) + " ");
 				}
-				if (null != column[1]) {
-					eligibilityReportDataVO.setUnionStatus((column[1].toString()));
+				if(null != column[1]) {
+					eligibilityReportDataVO.setEmployeeName(eligibilityReportDataVO.getEmployeeName() + (column[1].toString()));
 				}
 				if (null != column[2]) {
-					eligibilityReportDataVO.setSsn((column[2].toString()));
+					eligibilityReportDataVO.setUnionStatus((column[2].toString()));
 				}
 				if (null != column[3]) {
-					eligibilityReportDataVO.setMostRecentShow((column[3].toString()));
+					eligibilityReportDataVO.setSsn((column[3].toString()));
 				}
 				if (null != column[4]) {
-					eligibilityReportDataVO.setMostRecentJobTitle((column[4].toString()));
+					eligibilityReportDataVO.setMostRecentShow((column[4].toString()));
 				}
 				if (null != column[5]) {
-					eligibilityReportDataVO.setAverageWeeklyHours((column[5].toString()));
+					eligibilityReportDataVO.setMostRecentJobTitle((column[5].toString()));
 				}
 				if (null != column[6]) {
-					eligibilityReportDataVO.setTotalHours((column[6].toString()));
+					eligibilityReportDataVO.setAverageWeeklyHours((column[6].toString()));
 				}
 				if (null != column[7]) {
-					eligibilityReportDataVO.setStandardMeasuredEligibility((column[7].toString()));
+					eligibilityReportDataVO.setTotalHours((column[7].toString()));
 				}
 				if (null != column[8]) {
-					eligibilityReportDataVO.setBenefitsEffective((column[8].toString()));
+					eligibilityReportDataVO.setStandardMeasuredEligibility((column[8].toString()));
 				}
 				if (null != column[9]) {
-					eligibilityReportDataVO.setControlGroup((column[9].toString()));
+					eligibilityReportDataVO.setBenefitsEffective((column[9].toString()));
+				}
+				if (null != column[10]) {
+					eligibilityReportDataVO.setControlGroup((column[10].toString()));
+				}
+				if (null != column[11]) {
+					eligibilityReportDataVO.setWorkYear((column[11].toString()));
 				}
 				listVo.add(eligibilityReportDataVO);
 			}

@@ -104,7 +104,10 @@ public class DemographicsReportDaoImpl implements IDemographicsReportDao{
 					demoGraphicsReportDataVO.setPayrollCompany((column[3].toString()));
 				}
 				if (null != column[4]) {
-					demoGraphicsReportDataVO.setEmployeeName((column[4].toString()+" "+column[5].toString()));
+					demoGraphicsReportDataVO.setEmployeeName((column[4].toString()) + " ");
+				}
+				if (null != column[5]) {
+					demoGraphicsReportDataVO.setEmployeeName(demoGraphicsReportDataVO.getEmployeeName() + (column[5].toString()));
 				}
 				if (null != column[6]) {
 					demoGraphicsReportDataVO.setUnionStatus((column[6].toString()));
@@ -147,6 +150,9 @@ public class DemographicsReportDaoImpl implements IDemographicsReportDao{
 				}
 				if (null != column[19]) {
 					demoGraphicsReportDataVO.setControlGroup((column[19].toString()));
+				}
+				if (null != column[20]) {
+					demoGraphicsReportDataVO.setWorkYear((column[20].toString()));
 				}
 				listVo.add(demoGraphicsReportDataVO);
 			}

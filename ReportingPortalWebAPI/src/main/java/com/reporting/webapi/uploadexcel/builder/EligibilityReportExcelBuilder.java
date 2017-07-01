@@ -118,6 +118,10 @@ public class EligibilityReportExcelBuilder {
         header.getCell(7).setCellStyle(style);
         header.createCell(8).setCellValue("Benefits Effective");
         header.getCell(8).setCellStyle(style);
+        header.createCell(9).setCellValue("Control Group");
+        header.getCell(9).setCellStyle(style);
+        header.createCell(10).setCellValue("WorkYear");
+        header.getCell(10).setCellStyle(style);
         
         int rowCount = 1;
         for(Object reportObj : reportsList) {
@@ -134,6 +138,8 @@ public class EligibilityReportExcelBuilder {
         	newRow.createCell(6).setCellValue(reportRowBean.getTotalHours());
         	newRow.createCell(7).setCellValue(reportRowBean.getStandardMeasuredEligibility());
         	newRow.createCell(8).setCellValue(reportRowBean.getBenefitsEffective());
+        	newRow.createCell(9).setCellValue(reportRowBean.getBenefitsEffective());
+        	newRow.createCell(10).setCellValue(reportRowBean.getBenefitsEffective());
         }
         
 		try{

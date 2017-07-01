@@ -61,66 +61,71 @@ private final Logger logger = Logger.getLogger(BreakInServiceReportDaoImpl.class
 
 
 	@Override
-	public List<BreakInReportDataVO> getBreakInReportData(String workYear,String controlGroup,String weekStarting,String weekEnding) throws Exception {
-		if(logger.isDebugEnabled()){
-			logger.debug("START :: BreakInServiceReportDaoImpl : getBreakInReportData : Method to getBreakInReportData");
+	public List<BreakInReportDataVO> getBreakInReportData(String workYear, String controlGroup, String weekStarting,
+			String weekEnding) throws Exception {
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+					"START :: BreakInServiceReportDaoImpl : getBreakInReportData : Method to getBreakInReportData");
 		}
-		
+
 		Session session = sessionFactory.openSession();
 		BreakInReportDataVO breakInReportDataVO = null;
 		List<BreakInReportDataVO> listVo = null;
-		try{
+		try {
 			Query query = session.getNamedQuery("PRC_BreakInService_ReportData");
 			query.setParameter("workYear", workYear);
 			query.setParameter("controlGroup", controlGroup);
 			query.setParameter("weekStarting", weekStarting);
 			query.setParameter("weekEnding", weekEnding);
 			List<?> list = query.list();
-			
+
 			listVo = new ArrayList<BreakInReportDataVO>();
 			if (list != null && list.size() > 0) {
-			Iterator<?> iterator = list.iterator();
-			while(iterator.hasNext()){
-				Object column[] = (Object[])iterator.next();
-				breakInReportDataVO = new BreakInReportDataVO();
-				if (null != column[0]) {
-					breakInReportDataVO.setFirstName((column[0].toString()));
+				Iterator<?> iterator = list.iterator();
+				while (iterator.hasNext()) {
+					Object column[] = (Object[]) iterator.next();
+					breakInReportDataVO = new BreakInReportDataVO();
+					if (null != column[0]) {
+						breakInReportDataVO.setFirstName((column[0].toString()));
+					}
+					if (null != column[1]) {
+						breakInReportDataVO.setLastName((column[1].toString()));
+					}
+					if (null != column[2]) {
+						breakInReportDataVO.setSsn((column[2].toString()));
+					}
+					if (null != column[3]) {
+						breakInReportDataVO.setServiceStatus((column[3].toString()));
+					}
+					if (null != column[4]) {
+						breakInReportDataVO.setWeekStarting((column[4].toString()));
+					}
+					if (null != column[5]) {
+						breakInReportDataVO.setWeekEnding((column[5].toString()));
+					}
+					if (null != column[6]) {
+						breakInReportDataVO.setWeekCount((column[6].toString()));
+					}
+					if (null != column[7]) {
+						breakInReportDataVO.setControlGroup((column[7].toString()));
+					}
+					if (null != column[8]) {
+						breakInReportDataVO.setWorkYear((column[8].toString()));
+					}
+					listVo.add(breakInReportDataVO);
 				}
-				if (null != column[1]) {
-					breakInReportDataVO.setLastName((column[1].toString()));
-				}
-				if (null != column[2]) {
-					breakInReportDataVO.setSsn((column[2].toString()));
-				}
-				if (null != column[3]) {
-					breakInReportDataVO.setServiceStatus((column[3].toString()));
-				}
-				if (null != column[4]) {
-					breakInReportDataVO.setWeekStarting((column[4].toString()));
-				}
-				if (null != column[5]) {
-					breakInReportDataVO.setWeekEnding((column[5].toString()));
-				}
-				if (null != column[6]) {
-					breakInReportDataVO.setWeekCount((column[6].toString()));
-				}
-				if (null != column[7]) {
-					breakInReportDataVO.setControlGroup((column[7].toString()));
-				}
-				listVo.add(breakInReportDataVO);
+			} else {
+				listVo = null;
 			}
-			}else{
-				listVo=null;
-			}
-			
-		}catch(Exception e){
-			
+
+		} catch (Exception e) {
+
 		}
-		
-		if(logger.isDebugEnabled()){
+
+		if (logger.isDebugEnabled()) {
 			logger.debug("END :: BreakInServiceReportDaoImpl : getBreakInReportData : Method to getBreakInReportData");
 		}
-		
+
 		return listVo;
 	}
 	

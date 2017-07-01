@@ -19,6 +19,7 @@
 	<context:component-scan base-package="com.reporting.webapi.resources" />
 	<context:component-scan base-package="com.reporting.webapi.service" />
 	<context:component-scan base-package="com.reporting.webapi.vo" />
+	<context:component-scan base-package="com.reporting.webapi.helper" />
 	<context:component-scan base-package="com.reporting.webapi.util" />
 
 	<!-- for database configuration -->
