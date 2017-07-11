@@ -1,0 +1,187 @@
+ALE URLs, Request and Response Objects
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aleservice/addale
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aleservice/addale
+
+Request Method:
+POST
+
+Headers:
+Content-Type:application/json
+
+Request Body:
+
+{
+	"aleName":"ALE1",
+	"aleFein":"FEIN1",
+	"aleAddress1":"210 MARKET ST",
+	"aleAddress2":"1 51 CGL BLBNG",
+	"aleCity":"NEW YORK",
+	"aleProvince":"NEW YORK",
+	"aleState":"NY",
+	"aleZip":"10022",
+	"aleCountry":"USA",
+	"aleContactFirstName":"JOHN",
+	"aleContactLastName":"MILTON",
+	"aleContactContactNumber":"510-800-1234",
+	"active":"true"
+}
+
+
+Response:
+
+	Inserted Successfully:
+    {
+        "result": 1
+    }
+
+	Inserted failure:
+    {
+        "result": 0
+    }
+
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aleservice/updateale
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aleservice/updateale
+
+Request Method:
+PUT
+
+Headers:
+Content-Type:application/json
+
+Request Body:
+
+{
+	"aleId":"1",
+	"aleName":"ALE1",
+	"aleFein":"FEIN1",
+	"aleAddress1":"210 MARKET STREEaaaT",
+	"aleAddress2":"1 51 CGL BLBNGaaaa",
+	"aleCity":"NEW YORK",
+	"aleProvince":"NEW YORK",
+	"aleState":"NY",
+	"aleZip":"10023",
+	"aleCountry":"USA",
+	"aleContactFirstName":"JOHN",
+	"aleContactLastName":"MILTON",
+	"aleContactContactNumber":"510-800-1234",
+	"active":"true"
+}
+
+
+Response:
+
+	Updated Successfully:
+    {
+        "result": 1
+    }
+
+	Updated failure:
+    {
+        "result": 0
+    }
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aleservice/deleteale?AleId=1&AleName=ALE1&AleFein=FEIN1
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aleservice/deleteale?AleId=1&AleName=ALE1&AleFein=FEIN1
+
+Request Method:
+PUT
+
+Headers:
+Content-Type:application/json
+
+Response:
+
+    {
+        "result": 0
+    }
+
+
+    {
+        "result": 1
+    }
+
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aleservice/loadallale
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aleservice/loadallale
+
+Request Method:
+GET
+
+Headers:
+Content-Type:application/json
+	
+Response:
+
+  {
+  "aleData": [
+    {
+      "aleId": 3,
+      "aleName": "ALE1",
+      "aleFein": "FEIN1",
+      "aleAddress1": "210 MARKET ST",
+      "aleAddress2": "1 51 CGL BLBNG",
+      "aleCity": "NEW YORK",
+      "aleProvince": "NEW YORK",
+      "aleState": "NY",
+      "aleZip": "10022",
+      "aleCountry": "USA",
+      "aleContactFirstName": "JOHN",
+      "aleContactLastName": "MILTON",
+      "aleContactContactNumber": "510-800-1234",
+      "active": true,
+      "deleted": false,
+      "createdBy": "UserName",
+      "createdDate": "2017-07-03",
+      "modifiedBy": "UserName",
+	  "modifiedDate":"2017-06-30"
+    }
+  ]
+}
+
+===============================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aleservice/loadale?AleId=1&AleName=ALE1&AleFein=FEIN1
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aleservice/loadale?AleId=3&AleName=ALE1&AleFein=FEIN1
+
+Request Method:
+GET
+
+Headers:
+Content-Type:application/json
+
+Response:
+
+{
+  "ale": {
+    "aleId": 3,
+    "aleName": "ALE1",
+    "aleFein": "FEIN1",
+    "aleAddress1": "210 MARKET ST",
+    "aleAddress2": "1 51 CGL BLBNG",
+    "aleCity": "NEW YORK",
+    "aleProvince": "NEW YORK",
+    "aleState": "NY",
+    "aleZip": "10022",
+    "aleCountry": "USA",
+    "aleContactFirstName": "JOHN",
+    "aleContactLastName": "MILTON",
+    "aleContactContactNumber": "510-800-1234",
+    "active": true,
+    "deleted": false,
+    "createdBy": "UserName",
+    "createdDate": "2017-07-03",
+    "modifiedBy": "UserName",
+	"modifiedDate":"2017-06-30"
+  }
+}
+===============================================================================================================================================================

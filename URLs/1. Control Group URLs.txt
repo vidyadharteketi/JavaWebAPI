@@ -1,0 +1,192 @@
+Control Group URLs, Request and Response Objects
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/controlgroupservice/addcontrolgroup
+
+Request Method:
+POST
+
+Headers:
+Content-Type:application/json
+
+Request Body:
+{
+	"controlGroupName":"AB",
+	"controlGroupEIN":"EIN1",
+	"measurementStartDate":"2017-06-30",
+	"measurementEndDate":"2017-07-31",
+	"measurementEndDate1":"2017-07-31",
+	"measurementEndDate2":"2017-07-31",
+	"measurementEndDate3":"2017-07-31",
+	"measurementEndDate4":"2017-07-31",
+	"active":"true"
+}
+
+Response:
+
+	Inserted Successfully:
+    {
+        "result": 1
+    }
+
+	Inserted failure:
+    {
+        "result": 0
+    }
+
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/controlgroupservice/updatecontrolgroup
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/controlgroupservice/updatecontrolgroup
+
+Request Method:
+PUT
+
+Headers:
+Content-Type:application/json
+
+Request Body:
+{
+	"controlGroupId":"1",
+	"controlGroupName":"CCDD",
+	"controlGroupEIN":"EIN1",
+	"measurementStartDate":"2017-06-30",
+	"measurementEndDate":"2017-07-31",
+	"measurementEndDate1":"2017-07-31",
+	"measurementEndDate2":"2017-07-31",
+	"measurementEndDate3":"2017-07-31",
+	"measurementEndDate4":"2017-07-31",
+	"active":"true"
+}
+
+
+Response:
+
+	Updated Successfully:
+    {
+        "result": 1
+    }
+
+	Updated failure:
+    {
+        "result": 0
+    }
+================================================================================================================================================================
+
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/controlgroupservice/deletecontrolgroup?ControlGroupId=1&ControlGroupName=AB
+
+Request Method:
+PUT
+
+Headers:
+Content-Type:application/json
+
+Response:
+
+    {
+        "result": 0
+    }
+
+
+    {
+        "result": 1
+    }
+
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/controlgroupservice/loadallcontrolgroup
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/controlgroupservice/loadallcontrolgroup
+
+Request Method:
+GET
+
+Headers:
+Content-Type:application/json
+    
+	{
+  "controlGroupData": [
+    {
+      "controlGroupId": "13",
+      "controlGroupEIN": "EIN1",
+      "controlGroupName": "CD",
+      "createdBy": "UserName",
+      "createdDate": "2017-07-02",
+      "active": true,
+      "deleted": "true",
+      "measurementEndDate": "2017-01-31",
+      "measurementEndDate1": "2017-01-31",
+      "measurementEndDate3": "2017-01-31",
+      "measurementEndDate2": "2017-01-31",
+      "measurementStartDate": "2017-01-30",
+      "modifiedBy": "UserName",
+	  "modifiedDate":"2017-06-30"
+    },
+    {
+      "controlGroupId": "14",
+      "controlGroupEIN": "EIN144",
+      "controlGroupName": "AB",
+      "createdBy": "UserName",
+      "createdDate": "2017-07-03",
+      "active": true,
+      "deleted": "true",
+      "measurementEndDate": "2017-01-31",
+      "measurementEndDate1": "2017-01-31",
+      "measurementEndDate3": "2017-01-31",
+      "measurementEndDate4": "2017-01-31",
+      "measurementEndDate2": "2017-01-31",
+      "measurementStartDate": "2017-01-30",
+      "modifiedBy": "UserName",
+	  "modifiedDate":"2017-06-30"
+    },
+    {
+      "controlGroupId": "17",
+      "controlGroupEIN": "EIN1",
+      "controlGroupName": "Vidya",
+      "createdBy": "UserName",
+      "createdDate": "2017-07-03",
+      "active": true,
+      "deleted": "true",
+      "measurementEndDate": "2017-01-31",
+      "measurementEndDate1": "2017-01-31",
+      "measurementEndDate3": "2017-01-31",
+      "measurementEndDate2": "2017-01-31",
+      "measurementStartDate": "2017-01-30",
+      "modifiedBy": "UserName",
+	  "modifiedDate":"2017-06-30"
+    }
+  ]
+}
+===============================================================================================================================================================
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/controlgroupservice/loadcontrolgroup?ControlGroupId=14&ControlGroupName=AB
+
+Request Method:
+GET
+
+Headers:
+Content-Type:application/json
+
+Response:
+
+  {
+  "controlGroup": {
+    "controlGroupId": "14",
+    "controlGroupEIN": "EIN144",
+    "controlGroupName": "AB",
+    "createdBy": "UserName",
+    "createdDate": "2017-07-03",
+    "active": true,
+    "deleted": "true",
+    "measurementEndDate": "2017-01-31",
+    "measurementEndDate1": "2017-01-31",
+    "measurementEndDate3": "2017-01-31",
+    "measurementEndDate4": "2017-01-31",
+    "measurementEndDate2": "2017-01-31",
+    "measurementStartDate": "2017-01-30",
+    "modifiedBy": "UserName",
+	"modifiedDate":"2017-06-30"
+  }
+}
+===============================================================================================================================================================

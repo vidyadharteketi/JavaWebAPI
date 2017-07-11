@@ -1,0 +1,268 @@
+http://localhost:8080/DataOnBoardingWebAPI/rest/aledetailsservice/addaledetails
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aledetailsservice/addaledetails
+
+Request Method:
+POST
+
+Headers:
+Content-Type:application/json
+
+
+
+Request Body:
+
+{
+	"aleId":"3",
+	"aleTaxYear":"2016",
+	"isAcaSubscriber":"N",
+	"isFilingAuthoritative1094c":"N",
+	"isAcaReportingShared":"N",
+	"hTransitionRelief":"N",
+	"additional1095cCount":"123",
+	"controlGroupId":"14",
+	"additiontionalFulltimeEeJan":"10",
+	"additiontionalFulltimeEeFeb":"11",
+	"additiontionalFulltimeEeMar":"12",
+	"additiontionalFulltimeEeApr":"13",
+	"additiontionalFulltimeEeMay":"14",
+	"additiontionalFulltimeEeJun":"15",
+	"additiontionalFulltimeEeJul":"16",
+	"additiontionalFulltimeEeAug":"17",
+	"additiontionalFulltimeEeSep":"18",
+	"additiontionalFulltimeEeOct":"19",
+	"additiontionalFulltimeEeNov":"110",
+	"additiontionalFulltimeEeDec":"111",	
+	"additiontionalTotalEeJan":"20",
+	"additiontionalTotalEeFeb":"21",
+	"additiontionalTotalEeMar":"22",
+	"additiontionalTotalEeApr":"23",
+	"additiontionalTotalEeMay":"24",
+	"additiontionalTotalEeJun":"25",
+	"additiontionalTotalEeJul":"26",
+	"additiontionalTotalEeAug":"27",
+	"additiontionalTotalEeSep":"28",
+	"additiontionalTotalEeOct":"29",
+	"additiontionalTotalEeNov":"210",
+	"additiontionalTotalEeDec":"211",
+	"active":"true"
+}
+
+
+Response:
+
+	Inserted Successfully:
+    {
+        "result": 1
+    }
+
+	Inserted failure:
+    {
+        "result": 0
+    }
+
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aledetailsservice/updatealedetails
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aledetailsservice/updatealedetails
+
+Request Method:
+PUT
+
+Headers:
+Content-Type:application/json
+
+Request Body:
+
+{
+	"aleDetailsId":"4",
+	"aleId":"3",
+	"aleTaxYear":"2016",
+	"isAcaSubscriber":"Y",
+	"isFilingAuthoritative1094c":"Y",
+	"isAcaReportingShared":"Y",
+	"hTransitionRelief":"Y",
+	"additional1095cCount":"12324",
+	"controlGroupId":"14",
+	"additiontionalFulltimeEeJan":"10",
+	"additiontionalFulltimeEeFeb":"11",
+	"additiontionalFulltimeEeMar":"12",
+	"additiontionalFulltimeEeApr":"13",
+	"additiontionalFulltimeEeMay":"14",
+	"additiontionalFulltimeEeJun":"15",
+	"additiontionalFulltimeEeJul":"16",
+	"additiontionalFulltimeEeAug":"17",
+	"additiontionalFulltimeEeSep":"18",
+	"additiontionalFulltimeEeOct":"19",
+	"additiontionalFulltimeEeNov":"110",
+	"additiontionalFulltimeEeDec":"111",	
+	"additiontionalTotalEeJan":"20",
+	"additiontionalTotalEeFeb":"21",
+	"additiontionalTotalEeMar":"22",
+	"additiontionalTotalEeApr":"23",
+	"additiontionalTotalEeMay":"24",
+	"additiontionalTotalEeJun":"25",
+	"additiontionalTotalEeJul":"26",
+	"additiontionalTotalEeAug":"27",
+	"additiontionalTotalEeSep":"28",
+	"additiontionalTotalEeOct":"29",
+	"additiontionalTotalEeNov":"210",
+	"additiontionalTotalEeDec":"211",
+	"active":"true"
+}
+
+
+
+Response:
+
+	Updated Successfully:
+    {
+        "result": 1
+    }
+
+	Updated failure:
+    {
+        "result": 0
+    }
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aledetailsservice/deletealedetails?AleDetailsId=1&AleId=1&AleTaxYear=2016
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aledetailsservice/deletealedetails?AleDetailsId=1&AleId=1&AleTaxYear=2016
+
+Request Method:
+PUT
+
+Headers:
+Content-Type:application/json
+
+Response:
+
+    {
+        "result": 0
+    }
+
+
+    {
+        "result": 1
+    }
+
+================================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aledetailsservice/loadallaledetails
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aledetailsservice/loadallaledetails
+
+Request Method:
+GET
+
+Headers:
+Content-Type:application/json
+	
+Response:
+
+{
+  "aleDetailsData": [
+    {
+      "aleDetailsId": 4,
+      "aleId": 3,
+      "aleTaxYear": 2016,
+      "isAcaSubscriber": "Y",
+      "isFilingAuthoritative1094c": "Y",
+      "isAcaReportingShared": "Y",
+      "hTransitionRelief": "Y",
+      "additional1095cCount": 12324,
+      "controlGroupId": 14,
+      "additiontionalFulltimeEeJan": 10,
+      "additiontionalFulltimeEeFeb": 11,
+      "additiontionalFulltimeEeMar": 12,
+      "additiontionalFulltimeEeApr": 13,
+      "additiontionalFulltimeEeMay": 14,
+      "additiontionalFulltimeEeJun": 15,
+      "additiontionalFulltimeEeJul": 16,
+      "additiontionalFulltimeEeAug": 17,
+      "additiontionalFulltimeEeSep": 18,
+      "additiontionalFulltimeEeOct": 19,
+      "additiontionalFulltimeEeNov": 110,
+      "additiontionalFulltimeEeDec": 111,
+      "additiontionalTotalEeJan": 20,
+      "additiontionalTotalEeFeb": 21,
+      "additiontionalTotalEeMar": 22,
+      "additiontionalTotalEeApr": 23,
+      "additiontionalTotalEeMay": 24,
+      "additiontionalTotalEeJun": 25,
+      "additiontionalTotalEeJul": 26,
+      "additiontionalTotalEeAug": 27,
+      "additiontionalTotalEeSep": 28,
+      "additiontionalTotalEeOct": 29,
+      "additiontionalTotalEeNov": 210,
+      "additiontionalTotalEeDec": 211,
+      "active": true,
+      "deleted": true,
+      "createdBy": "UserName",
+      "createdDate": "2017-07-03",
+      "modifiedBy": "UserName",
+	  "modifiedDate":"2017-06-30"
+    }
+  ]
+}
+===============================================================================================================================================================
+
+http://localhost:8080/DataOnBoardingWebAPI/rest/aledetailsservice/loadaledetails?AleDetailsId=1&AleId=1&AleTaxYear=2016
+
+http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/aledetailsservice/loadaledetails?AleDetailsId=4&AleId=3&AleTaxYear=2016
+
+Request Method:
+GET
+
+Headers:
+Content-Type:application/json
+
+Response:
+
+{
+  "aceDetails": {
+    "aleDetailsId": 4,
+    "aleId": 3,
+    "aleTaxYear": 2016,
+    "isAcaSubscriber": "Y",
+    "isFilingAuthoritative1094c": "Y",
+    "isAcaReportingShared": "Y",
+    "hTransitionRelief": "Y",
+    "additional1095cCount": 12324,
+    "controlGroupId": 14,
+    "additiontionalFulltimeEeJan": 10,
+    "additiontionalFulltimeEeFeb": 11,
+    "additiontionalFulltimeEeMar": 12,
+    "additiontionalFulltimeEeApr": 13,
+    "additiontionalFulltimeEeMay": 14,
+    "additiontionalFulltimeEeJun": 15,
+    "additiontionalFulltimeEeJul": 16,
+    "additiontionalFulltimeEeAug": 17,
+    "additiontionalFulltimeEeSep": 18,
+    "additiontionalFulltimeEeOct": 19,
+    "additiontionalFulltimeEeNov": 110,
+    "additiontionalFulltimeEeDec": 111,
+    "additiontionalTotalEeJan": 20,
+    "additiontionalTotalEeFeb": 21,
+    "additiontionalTotalEeMar": 22,
+    "additiontionalTotalEeApr": 23,
+    "additiontionalTotalEeMay": 24,
+    "additiontionalTotalEeJun": 25,
+    "additiontionalTotalEeJul": 26,
+    "additiontionalTotalEeAug": 27,
+    "additiontionalTotalEeSep": 28,
+    "additiontionalTotalEeOct": 29,
+    "additiontionalTotalEeNov": 210,
+    "additiontionalTotalEeDec": 211,
+    "active": true,
+    "deleted": true,
+    "createdBy": "UserName",
+    "createdDate": "2017-07-03",
+    "modifiedBy": "UserName",
+	"modifiedDate":"2017-06-30"
+  }
+}
+
+===============================================================================================================================================================
