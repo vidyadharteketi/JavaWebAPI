@@ -12,62 +12,66 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "controlGroupData")
 public class ControlGroupVO implements Serializable{
 
-	@XmlElementWrapper(name = "ControlGroupId")
-	@XmlElement(name = "ControlGroupId")
+	@XmlElementWrapper(name = "controlGroupId")
+	@XmlElement(name = "controlGroupId")
 	private String controlGroupId;
 	
-	@XmlElementWrapper(name = "ControlGroupEIN")
-	@XmlElement(name = "ControlGroupEIN")
+	@XmlElementWrapper(name = "controlGroupEIN")
+	@XmlElement(name = "controlGroupEIN")
 	private String controlGroupEIN;
 	
-	@XmlElementWrapper(name = "ControlGroupName")
-	@XmlElement(name = "ControlGroupName")
+	@XmlElementWrapper(name = "controlGroupName")
+	@XmlElement(name = "controlGroupName")
 	private String controlGroupName;
 	
-	@XmlElementWrapper(name = "CreatedBy")
-	@XmlElement(name = "CreatedBy")
+	@XmlElementWrapper(name = "createdBy")
+	@XmlElement(name = "createdBy")
 	private String createdBy;
 	
-	@XmlElementWrapper(name = "CreatedDate")
-	@XmlElement(name = "CreatedDate")
+	@XmlElementWrapper(name = "createdDate")
+	@XmlElement(name = "createdDate")
 	private String createdDate;
 	
-	@XmlElementWrapper(name = "IsActive")
-	@XmlElement(name = "IsActive")
-	private boolean isActive;
+	@XmlElementWrapper(name = "active")
+	@XmlElement(name = "active")
+	private String active;
 	
-	@XmlElementWrapper(name = "IsDeleted")
-	@XmlElement(name = "IsDeleted")
-	private String isDeleted;
+	@XmlElementWrapper(name = "deleted")
+	@XmlElement(name = "deleted")
+	private String deleted;
 	
-	@XmlElementWrapper(name = "MeasurementEndDate")
-	@XmlElement(name = "MeasurementEndDate")
+	@XmlElementWrapper(name = "measurementEndDate")
+	@XmlElement(name = "measurementEndDate")
 	private String measurementEndDate;
 	
-	@XmlElementWrapper(name = "MeasurementEndDate1")
-	@XmlElement(name = "MeasurementEndDate1")
+	@XmlElementWrapper(name = "measurementEndDate1")
+	@XmlElement(name = "measurementEndDate1")
 	private String measurementEndDate1;
 	
-	@XmlElementWrapper(name = "MeasurementEndDate3")
-	@XmlElement(name = "MeasurementEndDate3")
+	@XmlElementWrapper(name = "measurementEndDate3")
+	@XmlElement(name = "measurementEndDate3")
 	private String measurementEndDate3;
 	
-	@XmlElementWrapper(name = "MeasurementEndDate4")
-	@XmlElement(name = "MeasurementEndDate4")
+	@XmlElementWrapper(name = "measurementEndDate4")
+	@XmlElement(name = "measurementEndDate4")
 	private String measurementEndDate4;
 	
-	@XmlElementWrapper(name = "MeasurementEndDate2")
-	@XmlElement(name = "MeasurementEndDate2")
+	@XmlElementWrapper(name = "measurementEndDate2")
+	@XmlElement(name = "measurementEndDate2")
 	private String measurementEndDate2;
 	
-	@XmlElementWrapper(name = "MeasurementStartDate")
-	@XmlElement(name = "MeasurementStartDate")
+	@XmlElementWrapper(name = "measurementStartDate")
+	@XmlElement(name = "measurementStartDate")
 	private String measurementStartDate;
 	
-	@XmlElementWrapper(name = "ModifiedBy")
-	@XmlElement(name = "ModifiedBy")
+	@XmlElementWrapper(name = "modifiedBy")
+	@XmlElement(name = "modifiedBy")
 	private String modifiedBy;
 
+	@XmlElementWrapper(name = "modifiedDate")
+	@XmlElement(name = "modifiedDate")
+	private String modifiedDate;
+	
 	public String getControlGroupId() {
 		return controlGroupId;
 	}
@@ -108,20 +112,20 @@ public class ControlGroupVO implements Serializable{
 		this.createdDate = createdDate;
 	}
 
-	public boolean isActive() {
-		return isActive;
+	public String getActive() {
+		return active;
 	}
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(String active) {
+		this.active = active;
 	}
 
-	public String getIsDeleted() {
-		return isDeleted;
+	public String getDeleted() {
+		return deleted;
 	}
 
-	public void setIsDeleted(String isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setDeleted(String deleted) {
+		this.deleted = deleted;
 	}
 
 	public String getMeasurementEndDate() {
@@ -178,6 +182,14 @@ public class ControlGroupVO implements Serializable{
 
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
+	}
+
+	public String getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(String modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 	

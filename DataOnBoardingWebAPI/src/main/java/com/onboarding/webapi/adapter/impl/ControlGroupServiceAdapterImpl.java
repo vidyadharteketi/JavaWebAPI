@@ -23,12 +23,19 @@ private final Logger logger = Logger.getLogger(ControlGroupServiceAdapterImpl.cl
 	@Override
 	@Transactional
 	public int processAddControlGroupData(ControlGroupBean controlGroupBean) throws Exception {
-		if(logger.isDebugEnabled()){
-			logger.debug("START :: ControlGroupServiceAdapterImpl : processAddControlGroupData : Method to processAddControlGroupData");
+		int result = 0;
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+					"START :: ControlGroupServiceAdapterImpl : processAddControlGroupData : Method to processAddControlGroupData");
 		}
-		int result = iControlGroupServiceDao.processAddControlGroupData(controlGroupBean);
-		if(logger.isDebugEnabled()){
-			logger.debug("END :: ControlGroupServiceAdapterImpl : processAddControlGroupData : Method to processAddControlGroupData");
+		try {
+			result = iControlGroupServiceDao.processAddControlGroupData(controlGroupBean);
+		} catch (Exception e) {
+			logger.error("Error while fetching data processAddControlGroupData : " + e.getMessage());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+					"END :: ControlGroupServiceAdapterImpl : processAddControlGroupData : Method to processAddControlGroupData");
 		}
 		return result;
 	}
@@ -36,12 +43,19 @@ private final Logger logger = Logger.getLogger(ControlGroupServiceAdapterImpl.cl
 	@Override
 	@Transactional
 	public int processUpdateControlGroupData(ControlGroupBean controlGroupBean) throws Exception {
-		if(logger.isDebugEnabled()){
-			logger.debug("START :: ControlGroupServiceAdapterImpl : processUpdateControlGroupData : Method to processUpdateControlGroupData");
+		int result = 0;
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+					"START :: ControlGroupServiceAdapterImpl : processUpdateControlGroupData : Method to processUpdateControlGroupData");
 		}
-		int result = iControlGroupServiceDao.processUpdateControlGroupData(controlGroupBean);
-		if(logger.isDebugEnabled()){
-			logger.debug("END :: ControlGroupServiceAdapterImpl : processUpdateControlGroupData : Method to processUpdateControlGroupData");
+		try {
+			result = iControlGroupServiceDao.processUpdateControlGroupData(controlGroupBean);
+		} catch (Exception e) {
+			logger.error("Error while fetching data processUpdateControlGroupData : " + e.getMessage());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+					"END :: ControlGroupServiceAdapterImpl : processUpdateControlGroupData : Method to processUpdateControlGroupData");
 		}
 		return result;
 	}
@@ -49,12 +63,19 @@ private final Logger logger = Logger.getLogger(ControlGroupServiceAdapterImpl.cl
 	@Override
 	@Transactional
 	public int processDeleteControlGroupData(String controlGroupId, String controlGroupName) throws Exception {
-		if(logger.isDebugEnabled()){
-			logger.debug("START :: ControlGroupServiceAdapterImpl : processDeleteControlGroupData : Method to processDeleteControlGroupData");
+		int result = 0;
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+					"START :: ControlGroupServiceAdapterImpl : processDeleteControlGroupData : Method to processDeleteControlGroupData");
 		}
-		int result = iControlGroupServiceDao.processDeleteControlGroupData(controlGroupId, controlGroupName);
-		if(logger.isDebugEnabled()){
-			logger.debug("END :: ControlGroupServiceAdapterImpl : processDeleteControlGroupData : Method to processDeleteControlGroupData");
+		try {
+			result = iControlGroupServiceDao.processDeleteControlGroupData(controlGroupId, controlGroupName);
+		} catch (Exception e) {
+			logger.error("Error while fetching data processDeleteControlGroupData : " + e.getMessage());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug(
+					"END :: ControlGroupServiceAdapterImpl : processDeleteControlGroupData : Method to processDeleteControlGroupData");
 		}
 		return result;
 	}

@@ -21,8 +21,8 @@ public class ControlGroupBean implements Serializable{
 	private String measurementEndDate2;
 	private String measurementEndDate3;
 	private String measurementEndDate4;
-	private boolean isActive;
-	private boolean isDeleted;
+	private boolean active;
+	private boolean deleted;
 	private String createdBy;
 	private String createdDate;
 	private String modifiedBy;
@@ -82,16 +82,16 @@ public class ControlGroupBean implements Serializable{
 		this.measurementEndDate4 = measurementEndDate4;
 	}
 	public boolean isActive() {
-		return isActive;
+		return active;
 	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	public boolean isDeleted() {
-		return isDeleted;
+		return deleted;
 	}
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 	public String getCreatedBy() {
 		return createdBy;

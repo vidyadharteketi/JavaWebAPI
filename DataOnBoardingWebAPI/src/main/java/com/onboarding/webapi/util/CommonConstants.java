@@ -29,7 +29,23 @@ public class CommonConstants {
 	public static final String UPDATE_CONTROL_GROUP = "/updatecontrolgroup";
 	public static final String DELETE_CONTROL_GROUP = "/deletecontrolgroup";
 	public static final String LOAD_ALL_CONTROL_GROUP = "/loadallcontrolgroup";
+	public static final String LOAD_ALL_CONTROL_GROUP_MAP = "/loadallcontrolgroupmap";
 	public static final String LOAD_CONTROL_GROUP = "/loadcontrolgroup";
+	
+	public static final String ALE_SERVICE = "/aleservice";
+	public static final String ADD_ALE = "/addale";
+	public static final String UPDATE_ALE = "/updateale";
+	public static final String DELETE_ALE = "/deleteale";
+	public static final String LOAD_ALL_ALE = "/loadallale";
+	public static final String LOAD_ALL_ALE_MAP = "/loadallalemap";
+	public static final String LOAD_ALE = "/loadale";
+	
+	public static final String ALE_DETAILS_SERVICE = "/aledetailsservice";
+	public static final String ADD_ALE_DETAILS = "/addaledetails";
+	public static final String UPDATE_ALE_DETAILS = "/updatealedetails";
+	public static final String DELETE_ALE_DETAILS = "/deletealedetails";
+	public static final String LOAD_ALL_ALE_DETAILS = "/loadallaledetails";
+	public static final String LOAD_ALE_DETAILS = "/loadaledetails";
 	
 	
 	

@@ -14,45 +14,49 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "tbl_data_control_group", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "CONTROL_GROUP_NAME") })
+		@UniqueConstraint(columnNames = "control_group_name") })
 public class ControlGroupDTO {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "CONTROL_GROUP_ID", unique = true, nullable = false)
+	@Column(name = "control_group_id", unique = true, nullable = false)
 	private Integer controlGroupId;
-	@Column(name = "CONTROL_GROUP_NAME", unique = true, nullable = false)
+	@Column(name = "control_group_name", unique = true, nullable = false)
 	private String controlGroupName;
-	@Column(name = "CONTROL_GROUP_EIN")
+	@Column(name = "control_group_ein")
 	private String controlGroupEIN;
-	@Column(name = "MEASUREMENT_START_DATE")
+	@Column(name = "measurement_start_date")
 	@Temporal(TemporalType.DATE)
 	private Date measurementStartDate;
-	@Column(name = "MEASUREMENT_END_DATE")
+	@Column(name = "measurement_end_date")
 	@Temporal(TemporalType.DATE)
 	private Date measurementEndDate;
-	@Column(name = "MEASUREMENT_END_DATE_1")
+	@Column(name = "measurement_end_date_1")
 	@Temporal(TemporalType.DATE)
 	private Date measurementEndDate1;
-	@Column(name = "MEASUREMENT_END_DATE_2")
+	@Column(name = "measurement_end_date_2")
 	@Temporal(TemporalType.DATE)
 	private Date measurementEndDate2;
-	@Column(name = "MEASUREMENT_END_DATE_3")
+	@Column(name = "measurement_end_date_3")
 	@Temporal(TemporalType.DATE)
 	private Date measurementEndDate3;
-	@Column(name = "MEASUREMENT_END_DATE_4")
+	@Column(name = "measurement_end_date_4")
 	@Temporal(TemporalType.DATE)
 	private Date measurementEndDate4;
-	@Column(name = "IS_ACTIVE")
-	private boolean isActive;
-	@Column(name = "IS_DELETED")
-	private boolean isDeleted;
-	@Column(name = "CREATED_BY")
+	@Column(name = "is_active")
+	private boolean active;
+	@Column(name = "is_deleted")
+	private boolean deleted;
+	@Column(name = "created_by")
 	private String createdBy;
-	@Column(name = "CREATED_DATE")
+	@Column(name = "created_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
-	@Column(name = "MODIFIED_BY")
+	@Column(name = "modified_by")
 	private String modifiedBy;
+	@Column(name = "modified_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modifiedDate;
+	
 	
 	public Integer getControlGroupId() {
 		return controlGroupId;
@@ -109,16 +113,16 @@ public class ControlGroupDTO {
 		this.measurementEndDate4 = measurementEndDate4;
 	}
 	public boolean isActive() {
-		return isActive;
+		return active;
 	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	public boolean isDeleted() {
-		return isDeleted;
+		return deleted;
 	}
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 	public String getCreatedBy() {
 		return createdBy;
@@ -138,7 +142,11 @@ public class ControlGroupDTO {
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-	
-	
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}	
 	
 }

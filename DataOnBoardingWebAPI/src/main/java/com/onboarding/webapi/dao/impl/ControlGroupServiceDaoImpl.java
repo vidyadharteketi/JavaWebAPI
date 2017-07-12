@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -47,32 +48,53 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 		try {
 			controlGroupDTO.setControlGroupName(controlGroupBean.getControlGroupName());
 			controlGroupDTO.setControlGroupEIN(controlGroupBean.getControlGroupEIN());
-			controlGroupDTO
-					.setMeasurementStartDate(commonUtil.convertStringToDate(controlGroupBean.getMeasurementStartDate()));
-			controlGroupDTO
-					.setMeasurementEndDate(commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate()));
-			controlGroupDTO
-					.setMeasurementEndDate1(commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate1()));
-			controlGroupDTO
-					.setMeasurementEndDate2(commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate2()));
-			controlGroupDTO
-					.setMeasurementEndDate3(commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate3()));
-			controlGroupDTO
-			.setMeasurementEndDate4(commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate4()));
+			if (StringUtils.isNotBlank(controlGroupBean.getMeasurementStartDate())) {
+				controlGroupDTO.setMeasurementStartDate(
+						commonUtil.convertStringToDate(controlGroupBean.getMeasurementStartDate()));
+			}
+			if (StringUtils.isNotBlank(controlGroupBean.getMeasurementEndDate())) {
+				controlGroupDTO.setMeasurementEndDate(
+						commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate()));
+			}
+			if (StringUtils.isNotBlank(controlGroupBean.getMeasurementEndDate1())) {
+				controlGroupDTO.setMeasurementEndDate1(
+						commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate1()));
+			}
+			if (StringUtils.isNotBlank(controlGroupBean.getMeasurementEndDate2())) {
+				controlGroupDTO.setMeasurementEndDate2(
+						commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate2()));
+			}
+			if (StringUtils.isNotBlank(controlGroupBean.getMeasurementEndDate3())) {
+				controlGroupDTO.setMeasurementEndDate3(
+						commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate3()));
+			}
+			if (StringUtils.isNotBlank(controlGroupBean.getMeasurementEndDate4())) {
+				controlGroupDTO.setMeasurementEndDate4(
+						commonUtil.convertStringToDate(controlGroupBean.getMeasurementEndDate4()));
+			}
 			controlGroupDTO.setActive(controlGroupBean.isActive());
-			controlGroupDTO.setDeleted(true);
+			controlGroupDTO.setDeleted(false);
 			controlGroupDTO.setCreatedBy("UserName");
 			controlGroupDTO.setCreatedDate(commonUtil.convertStringToDate());
 			controlGroupDTO.setModifiedBy("UserName");
+			controlGroupDTO.setModifiedDate(commonUtil.convertStringToDate());
 			session.save(controlGroupDTO);
 			tx.commit();
 
-			listVo = processLoadAllControlGroupData();
+			// listVo = processLoadAllControlGroupData();
 
 			result = 1;
 		} catch (Exception e) {
 			logger.error("Error while fetching data processAddControlGroupData : " + e.getMessage());
 			tx.rollback();
+
+			logger.debug(" Setting the ControlGroupID to MAX+1  :: ");
+			Transaction tx1 = session.getTransaction();
+			String sqlQry = "ALTER TABLE tbl_data_control_group AUTO_INCREMENT = 1;";
+			Query transUpdQry = session.createSQLQuery(sqlQry);
+			transUpdQry.executeUpdate();
+			tx1.commit();
+
 			result = 0;
 		} finally {
 			if (null != session) {
@@ -108,7 +130,7 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 					+ " CG.measurementEndDate2 = :measurementEndDate2, "
 					+ " CG.measurementEndDate3 = :measurementEndDate3, " 
 					+ " CG.measurementEndDate4 = :measurementEndDate4, " 
-					+ " CG.isActive = :isActive "
+					+ " CG.active = :isActive "
 					+ " WHERE CG.controlGroupId = :controlGroupId AND CG.controlGroupName=:controlGroupName";
 			Query transUpdQry = session.createQuery(tranUpdQry);
 			transUpdQry.setParameter("controlGroupEIN", controlGroupBean.getControlGroupEIN());
@@ -130,7 +152,7 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 			transUpdQry.executeUpdate();
 			tx.commit();
 
-			listVo = processLoadAllControlGroupData();
+			// listVo = processLoadAllControlGroupData();
 
 			result = 1;
 		} catch (Exception e) {
@@ -166,10 +188,10 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 
 		try {
 
-			String tranUpdQry = "UPDATE ControlGroupDTO CG SET  CG.isDeleted = :isDeleted "
+			String tranUpdQry = "UPDATE ControlGroupDTO CG SET  CG.deleted = :isDeleted "
 					+ " WHERE CG.controlGroupId = :controlGroupId AND CG.controlGroupName=:controlGroupName";
 			Query transUpdQry = session.createQuery(tranUpdQry);
-			transUpdQry.setParameter("isDeleted", false);
+			transUpdQry.setParameter("isDeleted", true);
 			transUpdQry.setParameter("controlGroupId", Integer.parseInt(controlGroupId));
 			transUpdQry.setParameter("controlGroupName", controlGroupName);
 			transUpdQry.executeUpdate();
@@ -211,9 +233,9 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 		ControlGroupVO controlGroupVO = null;
 		List<ControlGroupVO> listVo = new ArrayList<>();
 		
-		String sqlQry = "select CONTROL_GROUP_ID,CONTROL_GROUP_EIN,CONTROL_GROUP_NAME,CREATED_BY,CREATED_DATE,IS_ACTIVE,IS_DELETED,"
-				+ "MEASUREMENT_END_DATE,MEASUREMENT_END_DATE_1,MEASUREMENT_END_DATE_2,MEASUREMENT_END_DATE_3,"
-				+ "MEASUREMENT_END_DATE_4,MEASUREMENT_START_DATE,MODIFIED_BY from tbl_data_control_group";
+		String sqlQry = "select control_group_id,control_group_ein,control_group_name,created_by,created_date,is_active,is_deleted,"
+				+ "measurement_end_date,measurement_end_date_1,measurement_end_date_2,measurement_end_date_3,"
+				+ "measurement_end_date_4,measurement_start_date,modified_by,modified_date from tbl_data_control_group";
 
 		Session sqlSession = sessionFactory.openSession();
 		Query query = sqlSession.createSQLQuery(sqlQry);
@@ -241,10 +263,10 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 					controlGroupVO.setCreatedDate((column[4].toString()));
 				}
 				if (null != column[5]) {
-					controlGroupVO.setActive((Boolean.parseBoolean(column[5].toString())));
+					controlGroupVO.setActive((column[5].toString()));
 				}
 				if (null != column[6]) {
-					controlGroupVO.setIsDeleted((column[6].toString()));
+					controlGroupVO.setDeleted((column[6].toString()));
 				}
 				if (null != column[7]) {
 					controlGroupVO.setMeasurementEndDate((column[7].toString()));
@@ -267,6 +289,9 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 				if (null != column[13]) {
 					controlGroupVO.setModifiedBy((column[13].toString()));
 				}
+				if (null != column[14]) {
+					controlGroupVO.setModifiedDate((column[14].toString()));
+				}
 				listVo.add(controlGroupVO);
 			}
 		} else {
@@ -281,15 +306,15 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 		ControlGroupVO controlGroupVO = null;
 		List<ControlGroupVO> listVo = new ArrayList<ControlGroupVO>();
 
-		String sqlQry = "select CONTROL_GROUP_ID, CONTROL_GROUP_EIN, CONTROL_GROUP_NAME, CREATED_BY, CREATED_DATE, IS_ACTIVE, IS_DELETED,"
-				+ "MEASUREMENT_END_DATE, MEASUREMENT_END_DATE_1, MEASUREMENT_END_DATE_2, MEASUREMENT_END_DATE_3, MEASUREMENT_END_DATE_4,"
-				+ "MEASUREMENT_START_DATE,MODIFIED_BY from tbl_data_control_group"
-				+ "WHERE CONTROL_GROUP_ID = :controlGroupId AND CONTROL_GROUP_NAME = :controlGroupName";
-
 		Session sqlSession = sessionFactory.openSession();
+		
+		String sqlQry = "select control_group_id, control_group_ein, control_group_name, created_by, created_date, is_active, is_deleted,"
+				+ "measurement_end_date, measurement_end_date_1, measurement_end_date_2, measurement_end_date_3, measurement_end_date_4,"
+				+ "measurement_start_date,modified_by,modified_date from tbl_data_control_group"
+				+ " WHERE control_group_id = ? AND control_group_name = ?";
 		Query query = sqlSession.createSQLQuery(sqlQry);
-		query.setParameter("controlGroupId", Integer.parseInt(controlGroupId));
-		query.setParameter("controlGroupName", controlGroupName);
+		query.setParameter(0, Integer.parseInt(controlGroupId));
+		query.setParameter(1, controlGroupName);
 		
 		List<?> list = query.list();
 
@@ -314,10 +339,10 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 					controlGroupVO.setCreatedDate((column[4].toString()));
 				}
 				if (null != column[5]) {
-					controlGroupVO.setActive((Boolean.parseBoolean(column[5].toString())));
+					controlGroupVO.setActive((column[5].toString()));
 				}
 				if (null != column[6]) {
-					controlGroupVO.setIsDeleted((column[6].toString()));
+					controlGroupVO.setDeleted((column[6].toString()));
 				}
 				if (null != column[7]) {
 					controlGroupVO.setMeasurementEndDate((column[7].toString()));
@@ -339,6 +364,9 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 				}
 				if (null != column[13]) {
 					controlGroupVO.setModifiedBy((column[13].toString()));
+				}
+				if (null != column[14]) {
+					controlGroupVO.setModifiedDate((column[14].toString()));
 				}
 				break;
 			}

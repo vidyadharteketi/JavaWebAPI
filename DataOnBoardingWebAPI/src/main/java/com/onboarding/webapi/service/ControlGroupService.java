@@ -1,9 +1,12 @@
 package com.onboarding.webapi.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -20,9 +23,11 @@ import com.onboarding.webapi.adapter.IControlGroupServiceAdapter;
 import com.onboarding.webapi.bean.ControlGroupBean;
 import com.onboarding.webapi.response.vo.ControlGroupVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomControlGroupListVO;
+import com.onboarding.webapi.responsewrapper.vo.CustomControlGroupMapVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomControlGroupOutputVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomControlGroupVO;
 import com.onboarding.webapi.util.CommonConstants;
+import com.onboarding.webapi.util.CommonUtil;
 
 @Component
 @Path(value=CommonConstants.CONTROL_GROUP_SERVICE)
@@ -85,8 +90,8 @@ public class ControlGroupService {
 	@Path(CommonConstants.DELETE_CONTROL_GROUP)
 	@PUT
 	@Produces( { MediaType.APPLICATION_JSON})
-	public Response processDeleteControlGroupData(@QueryParam("ControlGroupId") String controlGroupId,
-			@QueryParam("ControlGroupName") String controlGroupName) {
+	public Response processDeleteControlGroupData(@HeaderParam("ControlGroupId") String controlGroupId,
+			@HeaderParam("ControlGroupName") String controlGroupName) {
 
 		if (logger.isDebugEnabled()) {
 			logger.debug("START :: ControlGroupService : deleteControlGroupData : Method to deleteControlGroupData");
@@ -129,8 +134,36 @@ public class ControlGroupService {
 		customControlGroupListVO.setControlGroupVO(controlGroupList);
 		
 		return Response.ok(customControlGroupListVO).build();
-
 	}
+	
+	@Path(CommonConstants.LOAD_ALL_CONTROL_GROUP_MAP)
+	@GET
+	@Produces( { MediaType.APPLICATION_JSON})
+	public Response processLoadAllControlGroupMap() {
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("START :: ControlGroupService : LoadAllControlGroupMap : Method to LoadAllControlGroupMap");
+		}
+		CustomControlGroupMapVO customControlGroupMapVO = new CustomControlGroupMapVO();
+		List<ControlGroupVO> controlGroupList = new ArrayList<>();
+		Map<String,String> controlGroupMap = new HashMap<>();
+		try {
+			controlGroupList = iControlGroupServiceAdapter.processLoadAllControlGroupData();
+		} catch (Exception e) {
+			logger.error("Error while invoking LoadAllControlGroupMap : " + e.getMessage());
+		}
+		for(ControlGroupVO cgVO : controlGroupList) {
+			controlGroupMap.put(cgVO.getControlGroupId(), cgVO.getControlGroupName());
+		}
+		controlGroupMap = CommonUtil.sortByKeys(controlGroupMap);
+		if (logger.isDebugEnabled()) {
+			logger.debug("END :: ControlGroupService : LoadAllControlGroupMap : Method to LoadAllControlGroupMap");
+		}
+		customControlGroupMapVO.setControlGroupMap(controlGroupMap);
+		
+		return Response.ok(customControlGroupMapVO).build();
+	}
+	
 	
 	@Path(CommonConstants.LOAD_CONTROL_GROUP)
 	@GET

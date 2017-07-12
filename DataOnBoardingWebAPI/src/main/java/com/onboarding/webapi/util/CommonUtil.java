@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -61,9 +63,13 @@ public class CommonUtil {
 	public Date convertStringToDate(String date) throws ParseException {
 
 		String start_dt = date;
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
-		Date convertDate = (Date) formatter.parse(start_dt);
-
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date convertDate = null;
+		try {
+			convertDate = (Date) formatter.parse(start_dt);
+		} catch (Exception e) {
+			logger.error("Error while invoking : convertStringToDate(String date) :: " + e.getMessage());
+		}
 		return convertDate;
 	}
 
@@ -72,11 +78,31 @@ public class CommonUtil {
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String format = formatter.format(date);
-
-		Date convertDate = (Date) formatter.parse(format);
-
+		Date convertDate = null;
+		try {
+			convertDate = (Date) formatter.parse(format);
+		} catch (Exception e) {
+			logger.error("Error while invoking : convertStringToDate() :: " + e.getMessage());
+		}
 		return convertDate;
 	}
 	
+	/**
+	 * Creates a folder to desired location if it not already exists
+	 * 
+	 * @param dirName - full path to the folder
+	 * @throws SecurityException - in case you don't have permission to create the folder
+	 */
+	public void createFolderIfNotExists(String dirName) throws SecurityException {
+		File theDir = new File(dirName);
+		if (!theDir.exists()) {
+			theDir.mkdir();
+		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public static <K extends Comparable, V> Map<K,V> sortByKeys(Map<K,V> map) {
+	    return new TreeMap<>(map);
+	}
 	
 }
