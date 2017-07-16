@@ -215,7 +215,7 @@ public class ALEServiceDaoImpl implements IALEServiceDao{
 		String sqlQry = "SELECT ale_id,ale_name,ale_fein,ale_address1,ale_address2,ale_city,ale_province,ale_state,"
 + "ale_zip,ale_country,ale_contact_first_name,ale_contact_last_name,ale_contact_contact_number,"
 + "is_active,is_deleted,created_by,created_date,modified_by,modified_date" 
-+ " FROM tbl_data_ale ";
++ " FROM tbl_data_ale where is_deleted = 0";
 
 		Session sqlSession = sessionFactory.openSession();
 		Query query = sqlSession.createSQLQuery(sqlQry);
@@ -390,7 +390,7 @@ public class ALEServiceDaoImpl implements IALEServiceDao{
 			String sqlQry = "SELECT ale_id,ale_name,ale_fein,ale_address1,ale_address2,ale_city,ale_province,ale_state,"
 	+ "ale_zip,ale_country,ale_contact_first_name,ale_contact_last_name,ale_contact_contact_number,"
 	+ "is_active,is_deleted,created_by,created_date,modified_by,modified_date" 
-	+ " FROM tbl_data_ale ";
+	+ " FROM tbl_data_ale where is_deleted = 0";
 
 			Session sqlSession = sessionFactory.openSession();
 			Query query = sqlSession.createSQLQuery(sqlQry);

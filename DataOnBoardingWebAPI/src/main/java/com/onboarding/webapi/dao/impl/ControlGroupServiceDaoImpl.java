@@ -235,7 +235,7 @@ public class ControlGroupServiceDaoImpl implements IControlGroupServiceDao{
 		
 		String sqlQry = "select control_group_id,control_group_ein,control_group_name,created_by,created_date,is_active,is_deleted,"
 				+ "measurement_end_date,measurement_end_date_1,measurement_end_date_2,measurement_end_date_3,"
-				+ "measurement_end_date_4,measurement_start_date,modified_by,modified_date from tbl_data_control_group";
+				+ "measurement_end_date_4,measurement_start_date,modified_by,modified_date from tbl_data_control_group where is_deleted = 0";
 
 		Session sqlSession = sessionFactory.openSession();
 		Query query = sqlSession.createSQLQuery(sqlQry);

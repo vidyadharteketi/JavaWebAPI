@@ -282,7 +282,7 @@ public class ALEDetailsServiceDaoImpl implements IALEDetailsServiceDao{
 				+ "additiontional_total_ee_apr,additiontional_total_ee_may,additiontional_total_ee_jun,additiontional_total_ee_jul,"
 				+ "additiontional_total_ee_aug,additiontional_total_ee_sep,additiontional_total_ee_oct,additiontional_total_ee_nov,additiontional_total_ee_dec,"
 				+ "is_active,is_deleted,created_by,created_date,modified_by,modified_date " 
-				+ "FROM tbl_data_ale_details";
+				+ "FROM tbl_data_ale_details where is_deleted = 0";
 
 		Session sqlSession = sessionFactory.openSession();
 		Query query = sqlSession.createSQLQuery(sqlQry);
@@ -589,7 +589,7 @@ public class ALEDetailsServiceDaoImpl implements IALEDetailsServiceDao{
 				+ "additiontional_total_ee_apr,additiontional_total_ee_may,additiontional_total_ee_jun,additiontional_total_ee_jul,"
 				+ "additiontional_total_ee_aug,additiontional_total_ee_sep,additiontional_total_ee_oct,additiontional_total_ee_nov,additiontional_total_ee_dec,"
 				+ "is_active,is_deleted,created_by,created_date,modified_by,modified_date " 
-				+ "FROM tbl_data_ale_details";
+				+ "FROM tbl_data_ale_details where is_deleted = 0";
 
 		Session sqlSession = sessionFactory.openSession();
 		Query query = sqlSession.createSQLQuery(sqlQry);
