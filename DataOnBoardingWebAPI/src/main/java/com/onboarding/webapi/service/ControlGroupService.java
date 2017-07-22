@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 
 import com.onboarding.webapi.adapter.IControlGroupServiceAdapter;
 import com.onboarding.webapi.bean.ControlGroupBean;
+import com.onboarding.webapi.response.vo.ControlGroupMapVO;
 import com.onboarding.webapi.response.vo.ControlGroupVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomControlGroupListVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomControlGroupMapVO;
@@ -146,6 +147,7 @@ public class ControlGroupService {
 		}
 		CustomControlGroupMapVO customControlGroupMapVO = new CustomControlGroupMapVO();
 		List<ControlGroupVO> controlGroupList = new ArrayList<>();
+		List<ControlGroupMapVO> controlGroupDropDownList = new ArrayList<>();
 		Map<String,String> controlGroupMap = new HashMap<>();
 		try {
 			controlGroupList = iControlGroupServiceAdapter.processLoadAllControlGroupData();
@@ -153,13 +155,17 @@ public class ControlGroupService {
 			logger.error("Error while invoking LoadAllControlGroupMap : " + e.getMessage());
 		}
 		for(ControlGroupVO cgVO : controlGroupList) {
-			controlGroupMap.put(cgVO.getControlGroupId(), cgVO.getControlGroupName());
+			ControlGroupMapVO cgMapVO = new ControlGroupMapVO();
+			cgMapVO.setControlGroupId(cgVO.getControlGroupId());
+			cgMapVO.setControlGroupName(cgVO.getControlGroupName());
+			controlGroupDropDownList.add(cgMapVO);
+			//controlGroupMap.put(cgVO.getControlGroupId(), cgVO.getControlGroupName());
 		}
 		controlGroupMap = CommonUtil.sortByKeys(controlGroupMap);
 		if (logger.isDebugEnabled()) {
 			logger.debug("END :: ControlGroupService : LoadAllControlGroupMap : Method to LoadAllControlGroupMap");
 		}
-		customControlGroupMapVO.setControlGroupMap(controlGroupMap);
+		customControlGroupMapVO.setControlGroupDropDownList(controlGroupDropDownList);
 		
 		return Response.ok(customControlGroupMapVO).build();
 	}

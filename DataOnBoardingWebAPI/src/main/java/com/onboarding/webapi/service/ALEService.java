@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import com.onboarding.webapi.adapter.IALEServiceAdapter;
 import com.onboarding.webapi.bean.ALEBean;
 import com.onboarding.webapi.response.vo.ALEVO;
+import com.onboarding.webapi.response.vo.AleMapVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomALEListVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomALEMapVO;
 import com.onboarding.webapi.responsewrapper.vo.CustomALEOutputVO;
@@ -146,6 +147,7 @@ public class ALEService {
 		}
 		CustomALEMapVO customALEMapVO = new CustomALEMapVO();
 		List<ALEVO> aleList = new ArrayList<>();
+		List<AleMapVO> aleDropDownList = new ArrayList<>();
 		Map<String,String> aleMap = new HashMap<>();
 		try {
 			aleList = iALEServiceAdapter.processLoadAllAleData();
@@ -156,10 +158,15 @@ public class ALEService {
 			logger.debug("END :: ALEService : processLoadAllAleMap : Method to processLoadAllAleMap");
 		}
 		for(ALEVO aleVO : aleList) {
-			aleMap.put(aleVO.getAleId(), aleVO.getAleName());
+			AleMapVO aleMapVO = new AleMapVO();
+			aleMapVO.setAleId(aleVO.getAleId());
+			aleMapVO.setAleName(aleVO.getAleName());
+			aleDropDownList.add(aleMapVO);
+			//aleMap.put(aleVO.getAleId(), aleVO.getAleName());
 		}
 		aleMap = CommonUtil.sortByKeys(aleMap);
-		customALEMapVO.setAleMap(aleMap);
+		
+		customALEMapVO.setAleDropDownList(aleDropDownList);
 		
 		return Response.ok(customALEMapVO).build();
 

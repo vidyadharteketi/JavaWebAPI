@@ -317,7 +317,8 @@ SELECT CONTROL_GROUP,WORK_YEAR,WORK_MONTH,WORKED_POOL_FTE_STATUS,
    FROM tbl_ercoverage 
 WHERE  (1=1) 
 	AND (workYear IS NULL OR WORK_YEAR=workYear)
-        AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup);
+          -- AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup)
+        AND (controlGroup IS NULL OR  FIND_IN_SET(CONTROL_GROUP,controlGroup));
  
     END$$
 
@@ -535,7 +536,9 @@ BEGIN
 WHERE  (1=1) 
 	AND (workYear IS NULL OR WORK_YEAR=workYear)
 	AND (workMonth IS NULL OR  WORK_MONTH=workMonth)
-        AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup);
+        -- AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup)
+        AND (controlGroup IS NULL OR  FIND_IN_SET(CONTROL_GROUP,controlGroup));
+
     END$$
 
 DELIMITER ;
@@ -551,7 +554,8 @@ DELIMITER $$
 USE `siprasoft`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PRC_NewHiresNonFullTime_Generate_ReferenceData`()
 BEGIN
-			
+
+	delete from tbl_reportsreferencedata where ReportName='EligibilityNewHiresNonFullTime';
 		
 	INSERT INTO  tbl_reportsreferencedata 
 	SELECT 'EligibilityNewHiresNonFullTime','WorkYear',   WorkYear, 1, 'Reporting',NOW(),'Reporting',NOW() FROM 
@@ -565,6 +569,9 @@ BEGIN
 	INSERT INTO  tbl_reportsreferencedata 
 	SELECT 'EligibilityNewHiresNonFullTime','EmployeeType',   EmployeeType, 1, 'Reporting',NOW(),'Reporting',NOW() FROM 
 	(SELECT DISTINCT EMPOYEE_TYPE  AS EmployeeType FROM tbl_newhiresnonfulltimereport) AS Result;
+	INSERT INTO  tbl_reportsreferencedata 
+	SELECT 'EligibilityNewHiresNonFullTime','UnionType',   EmployeeType, 1, 'Reporting',NOW(),'Reporting',NOW() FROM 
+	(SELECT DISTINCT UNION_TYPE  AS UnionType FROM tbl_newhiresnonfulltimereport) AS Result;
 END$$
 
 DELIMITER ;
@@ -675,7 +682,8 @@ BEGIN
 WHERE  (1=1) 
 	AND (workYear IS NULL OR WORK_YEAR=workYear)
 	AND (workMonth IS NULL OR  WORK_MONTH=workMonth)
-        AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup)
+        -- AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup)
+        AND (controlGroup IS NULL OR  FIND_IN_SET(CONTROL_GROUP,controlGroup))
 	AND (unionType IS NULL OR  UNION_TYPE=unionType)
 	AND (employeeType IS NULL OR  EMPOYEE_TYPE=employeeType)
 	AND (reportOfWeek IS NULL OR  WEEKS_WORKED=reportOfWeek);
@@ -704,7 +712,8 @@ SELECT * FROM tbl_newhiresnonfulltimereport
 WHERE  (1=1) 
 	AND (workYear IS NULL OR WORK_YEAR=workYear)
 	AND (workMonth is null or  WORK_MONTH=workMonth)
-        AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup)
+       -- AND (controlGroup IS NULL OR  CONTROL_GROUP=controlGroup)
+        AND (controlGroup IS NULL OR  FIND_IN_SET(CONTROL_GROUP,controlGroup))
 	AND (unionType IS NULL OR  UNION_TYPE=unionType)
 	AND (employeeType IS NULL OR  EMPOYEE_TYPE=employeeType)
 ) AS Result
@@ -959,3 +968,11 @@ DELIMITER ;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+call PRC_NewHiresFullTime_Generate_ReferenceData;
+call PRC_NewHiresNonFullTime_Generate_ReferenceData;
+call PRC_OnGoingReport_Generate_ReferenceData;
+call PRC_PayrollDataActivity_Report_Generate_ReferenceData;
+call PRC_ERCoverage_Report_Generate_ReferenceData;
