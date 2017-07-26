@@ -1,0 +1,43 @@
+1st Report
+==========
+http://localhost:8080/NHNFTReportWebAPI/rest/newHiresNonFullTime/getNewHireNonFullTImeReferenceData
+
+http://localhost:8080/NHNFTReportWebAPI/rest/newHiresNonFullTime/getReportCountByWeeks?WorkYear='2017'
+
+http://localhost:8080/NHNFTReportWebAPI/rest/newHiresNonFullTime/getReportsByWeeksCount?WorkMonth=2016&ReportOfWeek=13
+
+2rd Report
+==========
+
+http://localhost:8080/NHNFTReportWebAPI/rest/newHiresFullTime/getNewHireFullTimeReferenceData
+
+http://localhost:8080/NHNFTReportWebAPI/rest/newHiresFullTime/getACAEligibleCount?WorkYear=2016
+
+http://localhost:8080/NHNFTReportWebAPI/rest/newHiresFullTime/getReportByACAEligibleCount?WorkYear=2016&AcaEligibleCount=4
+
+3rd Report
+==========
+
+http://localhost:8080/NHNFTReportWebAPI/rest/eligibilityReportOngoing/getOnGoingReportReferenceData
+
+http://localhost:8080/NHNFTReportWebAPI/rest/eligibilityReportOngoing/getOnGoingCountByWeeks?MeasurementEndDate=30-12-2016&AvgWeeklyHours=30&ControlGroup=Revolution&TypeOfHours=Union
+
+http://localhost:8080/NHNFTReportWebAPI/rest/eligibilityReportOngoing/getOnGoingReportsByWeeksCount?MeasurementEndDate=30-12-2016&AvgWeeklyHours=30&ControlGroup=Revolution&TypeOfHours=Non Union&ReportOfWeek=26
+
+
+4th Report
+==========
+
+http://localhost:8080/NHNFTReportWebAPI/rest/erCoverageReport/getERCoverageReferenceData
+
+http://localhost:8080/NHNFTReportWebAPI/rest/erCoverageReport/getAnnualizedMonthlyCount?WorkYear=2016&ControlGroup=Revolution
+
+http://localhost:8080/NHNFTReportWebAPI/rest/erCoverageReport/getReportsByAnnualizedMonthlyCount?WorkYear=2016&ControlGroup=Revolution
+
+
+5th Report
+==========
+
+http://localhost:8080/NHNFTReportWebAPI/rest/payrollDataActivityReport/getPayrollReferenceData
+
+http://localhost:8080/NHNFTReportWebAPI/rest/payrollDataActivityReport/getReportsForPayrollDataActivity?WorkYear=2016&ControlGroup=Revolution
